@@ -1,4 +1,6 @@
-﻿namespace Mango.Web.Models
+﻿using System.Collections.Generic;
+
+namespace Mango.Web.Models
 {
     public class ResponseDto
     {

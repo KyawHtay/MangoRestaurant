@@ -1,5 +1,7 @@
 ﻿using Mango.Web.Models;
 using Mango.Web.Services.IServices;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Mango.Web.Services
 {

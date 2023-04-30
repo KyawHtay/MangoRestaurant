@@ -1,9 +1,16 @@
+using Duende.IdentityServer.AspNetIdentity;
+using Duende.IdentityServer.Services;
 using Mango.Services.Identity;
 using Mango.Services.Identity.DbContexts;
 using Mango.Services.Identity.Models;
 using Mango.Services.Identity.Models.Initializer;
+using Mango.Services.Identity.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +37,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddInMemoryClients(SD.Clients)
                     .AddAspNetIdentity<ApplicationUser>();
 
-builder.Services.AddScoped<IDbInitializer, DbInitilizer>();   
+builder.Services.AddScoped<IDbInitializer, DbInitilizer>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 builderService.AddDeveloperSigningCredential();
 
@@ -52,7 +60,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseIdentityServer();
-
 app.UseAuthorization();
 SeedDatabase();
 
