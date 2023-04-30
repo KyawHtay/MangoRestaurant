@@ -5,6 +5,7 @@ using IdentityModel;
 using Mango.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
