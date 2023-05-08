@@ -33,7 +33,7 @@ namespace Mango.Web.Services
             });
         }
 
-        public async Task<T> RemoveFromCartCartAsync<T>(int cardId, string token = null)
+        public async Task<T> RemoveFromCartAsync<T>(int cardId, string token = null)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
