@@ -78,7 +78,7 @@ namespace Mango.Web.Controllers
         {
             return View(await LoadCartDtoBasedOnLoggedUnUser());
         }
-        [HttpPost("Checkout")]
+        [HttpPost]
         public async Task<IActionResult> Checkout(CartDto cartDto)
         {
             try 
@@ -93,7 +93,6 @@ namespace Mango.Web.Controllers
                 return View(cartDto);
             }
         }
-        [HttpGet]
         public async Task<IActionResult> Confirmation()
         {
             return View();
