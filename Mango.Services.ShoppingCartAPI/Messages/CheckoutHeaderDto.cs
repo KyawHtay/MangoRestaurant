@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Mango.Services.ShoppingCartAPI.Models.Dto;
 
-namespace Mango.Web.Models
+namespace Mango.Services.ShoppingCartAPI.Messages
 {
-    public class CartHeaderDto
+    public class CheckoutHeaderDto
     {
         public int CartHeaderId { get; set; }
         public string UserId { get; set; }
@@ -17,5 +17,7 @@ namespace Mango.Web.Models
         public string CardNumber { get; set; }
         public string CVV { get; set; }
         public string ExpiryMonthYear { get; set; }
+        public int CartTotalItems { get; set; }
+        public IEnumerable<CartDetailsDto> CartDetails { get; set; }
     }
 }
