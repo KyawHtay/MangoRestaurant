@@ -14,9 +14,10 @@ namespace Mango.Services.ShoppingCartAPI.Controllers
         private readonly ICartRepository _cartRepository;
         private readonly IMessageBus _messageBus;
         protected ResponseDto _response;
-        public CartAPIController(ICartRepository cartRepository) {     
+        public CartAPIController(ICartRepository cartRepository, IMessageBus messageBus) {     
          
             _cartRepository= cartRepository;
+            _messageBus= messageBus;
             this._response = new ResponseDto();
         }
 
