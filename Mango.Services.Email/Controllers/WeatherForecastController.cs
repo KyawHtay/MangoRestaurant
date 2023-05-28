@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mango.Services.OrderAPI.Controllers
+namespace Mango.Services.Email.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -9,7 +9,7 @@ namespace Mango.Services.OrderAPI.DbContexts
         {
 
         }
-        public DbSet<OrderHeader> OrderHeader { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
 
     }

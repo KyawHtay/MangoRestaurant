@@ -1,5 +1,8 @@
-using AutoMapper;
+using Mango.MessageBus;
 using Mango.Services.OrderAPI.DbContexts;
+using Mango.Services.OrderAPI.Extension;
+using Mango.Services.OrderAPI.Messaging;
+using Mango.Services.OrderAPI.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -16,7 +19,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddScoped<ICouponRepository, CouponRepository>();
+//builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+var optionBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+optionBuilder.UseSqlServer(connectionString);
+builder.Services.AddSingleton(new OrderRepository(optionBuilder.Options));
+builder.Services.AddSingleton<IAzureServiceBusConsumer, AzureServiceBusConsumer>();
+builder.Services.AddSingleton<IMessageBus, AzureServiceBusMessageBus>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication("Bearer")
@@ -41,7 +50,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mango.Services.CouponAPI", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mango.Services.OrderAPI", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = @"Enter ''Bearer' [space] and your token",
@@ -84,5 +93,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseAzureServiceBusConsumer();
 app.Run();
+

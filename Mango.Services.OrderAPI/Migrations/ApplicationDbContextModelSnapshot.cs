@@ -87,8 +87,14 @@ namespace Mango.Services.OrderAPI.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("OrderTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("OrderTotal")
                         .HasColumnType("float");
+
+                    b.Property<bool>("PaymentStatus")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -101,7 +107,7 @@ namespace Mango.Services.OrderAPI.Migrations
 
                     b.HasKey("OrderHeaderId");
 
-                    b.ToTable("OrderHeader");
+                    b.ToTable("OrderHeaders");
                 });
 
             modelBuilder.Entity("Mango.Services.OrderAPI.Models.OrderDetails", b =>
