@@ -9,7 +9,7 @@ namespace Mango.Services.Email.DbContexts
         {
 
         }
-        public DbSet<EmailLog> Emailogs { get; set; }
+        public DbSet<EmailLog> Emaillogs { get; set; }
  
     }
 }
