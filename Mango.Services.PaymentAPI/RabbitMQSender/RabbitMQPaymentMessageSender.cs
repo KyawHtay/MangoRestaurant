@@ -3,16 +3,16 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 
-namespace Mango.Services.ShoppingCartAPI.RabbitMQSender
+namespace Mango.Services.PaymentAPI.RabbitMQSender
 {
-    public class RabbitMQCartMessageSender : IRabbitMQCartMessageSender
+    public class RabbitMQPaymentMessageSender : IRabbitMQPaymentMessageSender
     {
         private readonly string _hostname;
         private readonly string _password;
         private readonly string _username;
         private IConnection _connection;
 
-        public RabbitMQCartMessageSender()
+        public RabbitMQPaymentMessageSender()
         {
             _hostname = "localhost";
             _password = "guest";
